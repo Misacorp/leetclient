@@ -59,8 +59,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "npm run --silent lint",
-      "git add"
+      "npm run --silent lint"
     ]
   },
   "husky": {
