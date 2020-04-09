@@ -1,2 +1,2 @@
-export const ROOT = '';
-export const SUB_ROUTE = `${ROOT}/other-route-goes-here`;
+export const ROOT = '/';
+export const SERVER = 'servers';

@@ -12,7 +12,7 @@ import Main from './components/Main';
 
 WebFont.load({
   google: {
-    families: ['Vollkorn:700', 'Open Sans:300,400,600,800'],
+    families: ['Open Sans:300,400,600,800'],
   },
 });
 
