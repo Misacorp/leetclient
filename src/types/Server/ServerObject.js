@@ -1,4 +1,4 @@
-import UserObject from '../UserObject';
+import UserSummaryObject from '../User/UserSummaryObject';
 
 /**
  * Represents a single server object.
@@ -10,7 +10,7 @@ class ServerObject {
     this.iconUrl = dto.iconUrl;
 
     this.counts = dto.counts;
-    this.users = dto.users.map((user) => new UserObject(user));
+    this.users = dto.users.map((user) => new UserSummaryObject(user));
   }
 }
 

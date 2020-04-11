@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
-import UserObject from '../../types/UserObject';
+import { USER } from '../../constants/routes';
+import UserSummaryObject from '../../types/User/UserSummaryObject';
 
-const ServerUserStructure = ({ user, className }) => {
+/**
+ * Preview of a user on a server
+ */
+const ServerUserPreviewStructure = ({ match, user, className }) => {
   return (
     <div className={className}>
       <h4>{user.name}</h4>
@@ -16,11 +21,13 @@ const ServerUserStructure = ({ user, className }) => {
       {user.counts?.FAILED_LEET > 0 && (
         <p>Failed leets: {user.counts?.FAILED_LEET}</p>
       )}
+
+      <NavLink to={`${match.url}/${USER}/${user.id}`}>Inspect</NavLink>
     </div>
   );
 };
 
-const ServerUser = styled(ServerUserStructure)`
+const ServerUserPreview = styled(ServerUserPreviewStructure)`
   margin-bottom: 2rem;
   padding: 1rem;
   border-radius: 10px;
@@ -32,9 +39,10 @@ const ServerUser = styled(ServerUserStructure)`
   }
 `;
 
-ServerUserStructure.propTypes = {
-  user: PropTypes.instanceOf(UserObject).isRequired,
+ServerUserPreviewStructure.propTypes = {
+  match: PropTypes.object,
+  user: PropTypes.instanceOf(UserSummaryObject).isRequired,
   className: PropTypes.string,
 };
 
-export default ServerUser;
+export default ServerUserPreview;

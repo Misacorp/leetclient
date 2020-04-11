@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import LoadedContent from '../generic/LoadedContent';
-import ServerUser from './ServerUser';
+import ServerUserPreview from './ServerUserPreview';
 
+import * as routes from '../../constants/routes';
 import ServerObject from '../../types/Server/ServerObject';
 
 /**
@@ -12,27 +14,30 @@ import ServerObject from '../../types/Server/ServerObject';
  */
 const ServerStructure = ({ match, className }) => {
   const { serverId } = match.params;
-
   const URL = `${process.env.REACT_APP_API_URL}/servers/${serverId}`;
 
   return (
-    <LoadedContent url={URL} errorMessage="Error fetching server">
-      {(data) => {
-        const server = new ServerObject(data);
+    <div className={className}>
+      <Link to={`${routes.ROOT}${routes.SERVER}`}>Server list</Link>
 
-        return (
-          <div className={className}>
-            <h1>{server.name}</h1>
+      <LoadedContent url={URL} errorMessage="Error fetching server">
+        {(data) => {
+          const server = new ServerObject(data);
 
-            {server.users
-              .sort((a, b) => b.counts?.LEET - a.counts?.LEET)
-              .map((user) => (
-                <ServerUser user={user} key={user.id} />
-              ))}
-          </div>
-        );
-      }}
-    </LoadedContent>
+          return (
+            <>
+              <h1>{server.name}</h1>
+
+              {server.users
+                .sort((a, b) => b.counts?.LEET - a.counts?.LEET)
+                .map((user) => (
+                  <ServerUserPreview user={user} key={user.id} match={match} />
+                ))}
+            </>
+          );
+        }}
+      </LoadedContent>
+    </div>
   );
 };
 

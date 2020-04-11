@@ -5,8 +5,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import ServerList from './ServerList';
 import Server from './Server/Server';
+import User from './User/User';
 
-import { SERVER } from '../constants/routes';
+import { SERVER, USER } from '../constants/routes';
 
 const MainStructure = ({ match, className }) => {
   const currentPath = match.url.replace(/\/$/, '');
@@ -16,6 +17,11 @@ const MainStructure = ({ match, className }) => {
       <p>Leetbot stats</p>
 
       <Switch>
+        <Route
+          exact
+          path={`${currentPath}/${SERVER}/:serverId/${USER}/:userId`}
+          component={User}
+        />
         <Route
           exact
           path={`${currentPath}/${SERVER}/:serverId`}
