@@ -42,7 +42,6 @@ const apiRequest = async (url, method = 'GET', body) => {
   }
 
   // Send the request
-  console.log('Fetching from', finalURL, request);
   const response = await fetch(finalURL, request);
 
   // Handle response

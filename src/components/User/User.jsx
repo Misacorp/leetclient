@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import LoadedContent from '../generic/LoadedContent';
+import Message from './Message/Message';
 
 import UserObject from '../../types/User/UserObject';
 import { ROOT, SERVER } from '../../constants/routes';
@@ -19,16 +20,18 @@ const UserStructure = ({ match, className }) => {
     <div className={className}>
       <Link to={`${ROOT}${SERVER}/${serverId}`}>Server</Link>
 
-      <h1>User {userId}</h1>
-
       <LoadedContent url={URL} errorMessage="Error fetching user">
         {(data) => {
           const user = new UserObject(data);
 
           return (
             <div className={className}>
-              <p>{user.tag}</p>
               <h1>{user.name}</h1>
+              <p>{user.tag}</p>
+
+              {user.messages.map((msg) => (
+                <Message key={msg.id} message={msg} />
+              ))}
             </div>
           );
         }}
