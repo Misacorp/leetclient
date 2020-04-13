@@ -39,7 +39,8 @@ const MessageFiltersStructure = ({ messages, updateMessages, className }) => {
 
       const today = new Date();
 
-      let date = oldestMessage.createdAt;
+      // This date will travel from the oldest message to the present day
+      const date = oldestMessage.createdAt;
       date.setHours(0, 0, 0, 0);
 
       let index = 0;
@@ -47,12 +48,12 @@ const MessageFiltersStructure = ({ messages, updateMessages, className }) => {
       // Loop through days from the oldest message's date to the current date
       while (date < today) {
         const currentMessage = messagesByDate[index];
-        const { createdAt } = currentMessage;
 
         if (
-          createdAt.getYear() === date.getYear() &&
-          createdAt.getMonth() === date.getMonth() &&
-          createdAt.getDate() === date.getDate()
+          currentMessage &&
+          currentMessage.createdAt.getYear() === date.getYear() &&
+          currentMessage.createdAt.getMonth() === date.getMonth() &&
+          currentMessage.createdAt.getDate() === date.getDate()
         ) {
           // There is a message for this date
           messagesWithEmptyDates.push(currentMessage);
@@ -69,7 +70,7 @@ const MessageFiltersStructure = ({ messages, updateMessages, className }) => {
         }
 
         // Proceed to the next date
-        date = new Date(date.setDate(date.getDate() + 1));
+        date.setDate(date.getDate() + 1);
       }
 
       updateMessages(messagesWithEmptyDates);
