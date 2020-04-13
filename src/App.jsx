@@ -12,7 +12,7 @@ import Main from './components/Main';
 
 WebFont.load({
   google: {
-    families: ['Open Sans:300,400,600,800'],
+    families: ['Saira Semi Condensed:500,600,700'],
   },
 });
 

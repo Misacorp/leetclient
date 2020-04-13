@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import LoadedContent from '../generic/LoadedContent';
 import Message from './Message/Message';
+import UserSummary from './UserSummary';
 
 import UserObject from '../../types/User/UserObject';
 import { ROOT, SERVER } from '../../constants/routes';
@@ -26,8 +27,7 @@ const UserStructure = ({ match, className }) => {
 
           return (
             <div className={className}>
-              <h1>{user.name}</h1>
-              <p>{user.tag}</p>
+              <UserSummary user={user} />
 
               {user.messages.map((msg) => (
                 <Message key={msg.id} message={msg} />
@@ -40,7 +40,9 @@ const UserStructure = ({ match, className }) => {
   );
 };
 
-const User = styled(UserStructure)``;
+const User = styled(UserStructure)`
+  padding: 0.5rem;
+`;
 
 UserStructure.propTypes = {
   match: PropTypes.object,

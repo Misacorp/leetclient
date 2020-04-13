@@ -1,4 +1,5 @@
 const baseFonts = [
+  'Saira Semi Condensed',
   'Open Sans',
   'Roboto',
   'Helvetica Neue',
@@ -6,28 +7,24 @@ const baseFonts = [
   'sans-serif',
 ];
 
+/**
+ * Plum and orange palette
+ */
 export default {
   palette: {
     primary: {
-      lighter: '#FFCF74',
-      light: '#FFC14A',
-      main: '#FDB01F',
-      dark: '#D48C02',
-      darker: '#A76D00',
+      light: '#CE6A85',
+      main: '#985277',
+      dark: '#5C374C',
+      darker: '#3B2331',
     },
     secondary: {
-      lighter: '#7E6ACC',
-      light: '#5E45B9',
-      main: '#4428AE',
-      dark: '#2D1392',
-      darker: '#220C73',
+      lighter: '#FDDDCC',
+      light: '#FAA275',
+      main: '#FF8C61',
     },
-    tertiary: {
-      lighter: '#57C0B8',
-      light: '#31A89F',
-      main: '#139B92',
-      dark: '#018279',
-      darker: '#00675F',
+    typography: {
+      light: '#FDDDCC',
     },
   },
   typography: {
@@ -36,6 +33,13 @@ export default {
     },
     title: {
       fontFamily: baseFonts.join(','),
+    },
+    sizes: {
+      400: '18px',
+      500: '22px',
+      600: '32px',
+      700: '36px',
+      900: '48px',
     },
   },
 };

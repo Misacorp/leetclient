@@ -14,8 +14,6 @@ const MainStructure = ({ match, className }) => {
 
   return (
     <div className={className}>
-      <p>Leetbot stats</p>
-
       <Switch>
         <Route
           exact
