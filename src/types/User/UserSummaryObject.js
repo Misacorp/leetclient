@@ -4,7 +4,8 @@
 class UserObject {
   constructor(dto) {
     this.id = dto.id;
-    this.name = dto.name;
+    this.tag = dto.name;
+    this.name = this.tag.slice(0, this.tag.indexOf('#'));
     this.counts = dto.counts;
   }
 }

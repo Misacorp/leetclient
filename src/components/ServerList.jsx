@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+
+import Link from './generic/Link';
 
 import ServerListObject from '../types/ServerList/ServerListObject';
 import apiRequest from '../services/apiRequest';
@@ -44,7 +45,7 @@ const ServerListStructure = ({ match, className }) => {
       {servers.map((server) => (
         <div key={server.id}>
           <img src={server.iconUrl} alt={`Server icon for ${server.name}`} />
-          <NavLink to={`${match.url}/${server.id}`}>{server.name}</NavLink>
+          <Link to={`${match.url}/${server.id}`}>{server.name}</Link>
         </div>
       ))}
     </div>

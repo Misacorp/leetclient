@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+
+import Link from '../generic/Link';
 
 import { USER } from '../../constants/routes';
 import UserSummaryObject from '../../types/User/UserSummaryObject';
@@ -22,17 +23,15 @@ const ServerUserPreviewStructure = ({ match, user, className }) => {
         <p>Failed leets: {user.counts?.FAILED_LEET}</p>
       )}
 
-      <NavLink to={`${match.url}/${USER}/${user.id}`}>Inspect</NavLink>
+      <Link to={`${match.url}/${USER}/${user.id}`}>Inspect</Link>
     </div>
   );
 };
 
 const ServerUserPreview = styled(ServerUserPreviewStructure)`
-  margin-bottom: 2rem;
   padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16);
-  background-color: #f7f7f7;
+  background-color: ${({ theme }) => theme.palette.primary.darker}80;
+  margin-bottom: 1rem;
 
   h4 {
     margin: 0;

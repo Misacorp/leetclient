@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
+import Link from './Link';
 import { ReactComponent as BackTriangle } from '../../assets/back_triangle.svg';
 
 /**
@@ -26,15 +26,6 @@ const BackLink = styled(BackLinkStructure)`
   svg {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-  }
-
-  &,
-  &:visited,
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration: none;
-    color: ${({ theme }) => theme.palette.primary.light};
   }
 `;
 

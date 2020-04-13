@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
+import BackLink from '../generic/BackLink';
 import LoadedContent from '../generic/LoadedContent';
 import ServerUserPreview from './ServerUserPreview';
 
@@ -18,7 +18,7 @@ const ServerStructure = ({ match, className }) => {
 
   return (
     <div className={className}>
-      <Link to={`${routes.ROOT}${routes.SERVER}`}>Server list</Link>
+      <BackLink to={`${routes.ROOT}${routes.SERVER}`}>Server list</BackLink>
 
       <LoadedContent url={URL} errorMessage="Error fetching server">
         {(data) => {
@@ -41,7 +41,9 @@ const ServerStructure = ({ match, className }) => {
   );
 };
 
-const Server = styled(ServerStructure)``;
+const Server = styled(ServerStructure)`
+  padding: 1rem;
+`;
 
 ServerStructure.propTypes = {
   match: PropTypes.object,
