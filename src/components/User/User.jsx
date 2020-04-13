@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import LoadedContent from '../generic/LoadedContent';
 import Message from './Message/Message';
 import UserSummary from './UserSummary';
+import BackLink from '../generic/BackLink';
 
 import UserObject from '../../types/User/UserObject';
 import { ROOT, SERVER } from '../../constants/routes';
@@ -19,7 +19,7 @@ const UserStructure = ({ match, className }) => {
 
   return (
     <div className={className}>
-      <Link to={`${ROOT}${SERVER}/${serverId}`}>Server</Link>
+      <BackLink to={`${ROOT}${SERVER}/${serverId}`}>Server</BackLink>
 
       <LoadedContent url={URL} errorMessage="Error fetching user">
         {(data) => {
@@ -41,6 +41,9 @@ const UserStructure = ({ match, className }) => {
 };
 
 const User = styled(UserStructure)`
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.5rem;
 `;
 

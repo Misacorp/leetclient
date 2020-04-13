@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Count from './Counter/Count';
+
 /**
  * Leeb and failed leet counter container.
  */
@@ -13,6 +15,10 @@ const SecondaryCounters = styled.div`
   margin-right: auto;
 
   color: ${({ theme }) => theme.palette.secondary.light};
+
+  ${Count} {
+    padding-bottom: 0.5rem;
+  }
 `;
 
 export default SecondaryCounters;

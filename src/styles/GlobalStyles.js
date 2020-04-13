@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   html {
     height: auto;
+    min-height: 100vh;
   }
   body {
     margin: 0;
@@ -16,6 +17,9 @@ const GlobalStyles = createGlobalStyle`
       ${({ theme }) =>
         `${theme.palette.primary.dark}, ${theme.palette.primary.darker}`}
     );
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
   }
 
   h1, h2 {
