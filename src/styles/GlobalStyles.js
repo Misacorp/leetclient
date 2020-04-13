@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100%;
+    color: ${({ theme }) => theme.palette.secondary.lighter};
   }
 
   h1, h2 {

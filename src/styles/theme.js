@@ -35,6 +35,7 @@ export default {
       fontFamily: baseFonts.join(','),
     },
     sizes: {
+      200: '12px',
       400: '18px',
       500: '22px',
       600: '32px',

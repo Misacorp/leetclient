@@ -41,6 +41,7 @@ const UserSummary = styled(UserSummaryStructure)`
   padding-bottom: 2rem;
   background-color: ${({ theme }) => theme.palette.primary.darker}54;
   text-align: center;
+  margin-bottom: 3rem;
 
   h1 {
     margin-bottom: 1rem;

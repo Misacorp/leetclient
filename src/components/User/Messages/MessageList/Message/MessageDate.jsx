@@ -7,10 +7,12 @@ import PropTypes from 'prop-types';
  * @prop {Date} date Message creation date.
  */
 const MessageDateStructure = ({ date, className }) => {
-  return <div className={className}>{date.toLocaleDateString('fi-FI')}</div>;
+  return <span className={className}>{date.toLocaleDateString('fi-FI')}</span>;
 };
 
-const MessageDate = styled(MessageDateStructure)``;
+const MessageDate = styled(MessageDateStructure)`
+  display: block;
+`;
 
 MessageDateStructure.propTypes = {
   date: PropTypes.instanceOf(Date),

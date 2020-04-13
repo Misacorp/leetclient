@@ -8,13 +8,15 @@ import PropTypes from 'prop-types';
  */
 const MessageTimeStructure = ({ date, className }) => {
   return (
-    <div className={className}>
-      {`${date.toLocaleTimeString('fi-FI')}.${date.getMilliseconds()}`}
-    </div>
+    <span className={className}>
+      {`${date.toLocaleTimeString('sv-SE')}.${date.getMilliseconds()}`}
+    </span>
   );
 };
 
-const MessageTime = styled(MessageTimeStructure)``;
+const MessageTime = styled(MessageTimeStructure)`
+  display: block;
+`;
 
 MessageTimeStructure.propTypes = {
   date: PropTypes.instanceOf(Date),

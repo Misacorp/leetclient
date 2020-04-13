@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import LoadedContent from '../generic/LoadedContent';
-import Message from './Message/Message';
+import Messages from './Messages/Messages';
 import UserSummary from './UserSummary';
 import BackLink from '../generic/BackLink';
 
@@ -29,9 +29,7 @@ const UserStructure = ({ match, className }) => {
             <div className={className}>
               <UserSummary user={user} />
 
-              {user.messages.map((msg) => (
-                <Message key={msg.id} message={msg} />
-              ))}
+              <Messages messages={user.messages} />
             </div>
           );
         }}
