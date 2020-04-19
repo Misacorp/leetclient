@@ -13,6 +13,7 @@ const SecondaryCounters = styled.div`
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1rem;
 
   color: ${({ theme }) => theme.palette.secondary.light};
 

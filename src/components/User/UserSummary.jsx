@@ -8,6 +8,7 @@ import PrimaryCounters from './PrimaryCounters';
 import SecondaryCounters from './SecondaryCounters';
 
 import UserObject from '../../types/User/UserObject';
+import LongestStreak from './Stats/LongestStreak';
 
 /**
  * User summary.
@@ -29,6 +30,8 @@ const UserSummaryStructure = ({ user, className }) => {
         <Counter type="LEEB" amount={user.counts.LEEB} />
         <Counter type="FAILED_LEET" amount={user.counts.FAILED_LEET} />
       </SecondaryCounters>
+
+      <LongestStreak user={user} />
     </div>
   );
 };
