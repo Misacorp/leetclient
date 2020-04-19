@@ -24,6 +24,8 @@ const LongestStreakStructure = ({ user, className }) => {
     }
   }
 
+  longestStreak = Math.max(longestStreak, currentStreak);
+
   return (
     <StatTracker amount={longestStreak} className={className}>
       longest leet streak
