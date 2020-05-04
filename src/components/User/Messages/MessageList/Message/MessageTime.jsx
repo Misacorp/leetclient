@@ -7,9 +7,18 @@ import PropTypes from 'prop-types';
  * @prop {Date} date Message creation date.
  */
 const MessageTimeStructure = ({ date, className }) => {
+  // Add leading zeroes to the displayed millisecond string if necessary
+  const ms = date.getMilliseconds();
+  let msString = `${ms}`;
+  if (ms < 10) {
+    msString = `00${ms}`;
+  } else if (ms < 100) {
+    msString = `0${ms}`;
+  }
+
   return (
     <span className={className}>
-      {`${date.toLocaleTimeString('sv-SE')}.${date.getMilliseconds()}`}
+      {`${date.toLocaleTimeString('sv-SE')}.${msString}`}
     </span>
   );
 };
