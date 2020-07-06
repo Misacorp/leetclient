@@ -5,8 +5,9 @@ import { useRouteMatch } from 'react-router-dom';
 
 import LoadedContent from '../generic/LoadedContent';
 import Messages from './Messages/Messages';
-import UserSummary from './UserSummary';
+import EntitySummary from '../generic/EntitySummary';
 import BackLink from '../generic/BackLink';
+import NarrowContainer from '../generic/Containers/NarrowContainer';
 
 import UserObject from '../../types/User/UserObject';
 import { ROOT, SERVER } from '../../constants/routes';
@@ -21,7 +22,7 @@ const UserStructure = ({ className }) => {
   const URL = `${process.env.REACT_APP_API_URL}/users/${userId}`;
 
   return (
-    <div className={className}>
+    <NarrowContainer className={className}>
       <BackLink to={`${ROOT}${SERVER}/${serverId}`}>Server</BackLink>
 
       <LoadedContent url={URL} errorMessage="Error fetching user">
@@ -30,23 +31,23 @@ const UserStructure = ({ className }) => {
 
           return (
             <div className={className}>
-              <UserSummary user={user} />
+              <EntitySummary
+                name={user.name}
+                avatarUrl={user.avatarUrl}
+                counts={user.counts}
+                messages={user.messages}
+              />
 
               <Messages messages={user.messages} />
             </div>
           );
         }}
       </LoadedContent>
-    </div>
+    </NarrowContainer>
   );
 };
 
-const User = styled(UserStructure)`
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.5rem;
-`;
+const User = styled(UserStructure)``;
 
 UserStructure.propTypes = {
   className: PropTypes.string,

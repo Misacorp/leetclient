@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useRouteMatch } from 'react-router-dom';
 
 import Link from './generic/Link';
+import NarrowContainer from './generic/Containers/NarrowContainer';
 
 import ServerListObject from '../types/ServerList/ServerListObject';
 import apiRequest from '../services/apiRequest';
@@ -42,7 +43,7 @@ const ServerListStructure = ({ className }) => {
   }
 
   return (
-    <div className={className}>
+    <NarrowContainer className={className}>
       <h1>Server browser</h1>
 
       {servers.map((server) => (
@@ -51,7 +52,7 @@ const ServerListStructure = ({ className }) => {
           <Link to={`${match.url}/${server.id}`}>{server.name}</Link>
         </div>
       ))}
-    </div>
+    </NarrowContainer>
   );
 };
 

@@ -6,6 +6,8 @@ import { useRouteMatch } from 'react-router-dom';
 import BackLink from '../generic/BackLink';
 import LoadedContent from '../generic/LoadedContent';
 import ServerUserPreview from './ServerUserPreview';
+import EntitySummary from '../generic/EntitySummary';
+import NarrowContainer from '../generic/Containers/NarrowContainer';
 
 import * as routes from '../../constants/routes';
 import ServerObject from '../../types/Server/ServerObject';
@@ -19,7 +21,7 @@ const ServerStructure = ({ className }) => {
   const URL = `${process.env.REACT_APP_API_URL}/servers/${serverId}`;
 
   return (
-    <div className={className}>
+    <NarrowContainer className={className}>
       <BackLink to={`${routes.ROOT}${routes.SERVER}`}>Server list</BackLink>
 
       <LoadedContent url={URL} errorMessage="Error fetching server">
@@ -28,18 +30,22 @@ const ServerStructure = ({ className }) => {
 
           return (
             <>
-              <h1>{server.name}</h1>
+              <EntitySummary
+                name={server.name}
+                avatarUrl={server.iconUrl}
+                counts={server.counts}
+              />
 
               {server.users
                 .sort((a, b) => b.counts?.LEET - a.counts?.LEET)
-                .map((user) => (
-                  <ServerUserPreview user={user} key={user.id} match={match} />
+                .map((user, index) => (
+                  <ServerUserPreview user={user} key={user.id} index={index} />
                 ))}
             </>
           );
         }}
       </LoadedContent>
-    </div>
+    </NarrowContainer>
   );
 };
 

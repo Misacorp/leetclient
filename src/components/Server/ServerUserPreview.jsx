@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useRouteMatch } from 'react-router-dom';
 
 import Link from '../generic/Link';
 
@@ -10,10 +11,14 @@ import UserSummaryObject from '../../types/User/UserSummaryObject';
 /**
  * Preview of a user on a server
  */
-const ServerUserPreviewStructure = ({ match, user, className }) => {
+const ServerUserPreviewStructure = ({ user, index, className }) => {
+  const match = useRouteMatch();
+
   return (
     <div className={className}>
-      <h4>{user.name}</h4>
+      <h4>
+        {index + 1}. {user.name}
+      </h4>
 
       {user.counts?.LEET > 0 && <p>Leets: {user.counts?.LEET}</p>}
 
@@ -39,8 +44,8 @@ const ServerUserPreview = styled(ServerUserPreviewStructure)`
 `;
 
 ServerUserPreviewStructure.propTypes = {
-  match: PropTypes.object,
   user: PropTypes.instanceOf(UserSummaryObject).isRequired,
+  index: PropTypes.number.isRequired,
   className: PropTypes.string,
 };
 

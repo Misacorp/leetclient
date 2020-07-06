@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import UserObject from '../../../types/User/UserObject';
-
 const imageDimensions = {
   x: 150,
   y: 150,
@@ -11,15 +9,16 @@ const imageDimensions = {
 const dimensionUnit = 'px';
 
 /**
- * User avatar
- * @prop {UserObject} user User object
+ * Avatar
+ * @prop {string} name Name of the entity this avatar belongs to
+ * @prop {string} url  Image URL
  */
-const AvatarStructure = ({ user, className }) => {
+const AvatarStructure = ({ name, url, className }) => {
   return (
     <div className={className}>
       <img
-        src={user.avatarUrl}
-        alt={`${user.name}'s avatar`}
+        src={url}
+        alt={`${name} avatar`}
         width={`${`${imageDimensions.x * 1.5}${dimensionUnit}`}`}
         height={`${`${imageDimensions.y * 1.5}${dimensionUnit}`}`}
       />
@@ -55,7 +54,8 @@ const Avatar = styled(AvatarStructure)`
 `;
 
 AvatarStructure.propTypes = {
-  user: PropTypes.instanceOf(UserObject),
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
