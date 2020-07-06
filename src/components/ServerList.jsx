@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import { useRouteMatch } from 'react-router-dom';
 
 import Link from './generic/Link';
 
@@ -13,7 +14,9 @@ const serverListUrl = `${process.env.REACT_APP_API_URL}/servers`;
 /**
  * Server list.
  */
-const ServerListStructure = ({ match, className }) => {
+const ServerListStructure = ({ className }) => {
+  const match = useRouteMatch();
+
   const [servers, setServers] = useState([]);
 
   /**
@@ -55,7 +58,6 @@ const ServerListStructure = ({ match, className }) => {
 const ServerList = styled(ServerListStructure)``;
 
 ServerListStructure.propTypes = {
-  match: PropTypes.object,
   className: PropTypes.string,
 };
 

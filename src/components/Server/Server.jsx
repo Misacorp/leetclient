@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useRouteMatch } from 'react-router-dom';
 
 import BackLink from '../generic/BackLink';
 import LoadedContent from '../generic/LoadedContent';
@@ -12,7 +13,8 @@ import ServerObject from '../../types/Server/ServerObject';
 /**
  * Homepage for a given server.
  */
-const ServerStructure = ({ match, className }) => {
+const ServerStructure = ({ className }) => {
+  const match = useRouteMatch();
   const { serverId } = match.params;
   const URL = `${process.env.REACT_APP_API_URL}/servers/${serverId}`;
 
@@ -46,7 +48,6 @@ const Server = styled(ServerStructure)`
 `;
 
 ServerStructure.propTypes = {
-  match: PropTypes.object,
   className: PropTypes.string,
 };
 

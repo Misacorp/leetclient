@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import Frontpage from './Frontpage';
 import ServerList from './ServerList';
 import Server from './Server/Server';
 import User from './User/User';
@@ -18,15 +19,23 @@ const MainStructure = ({ match, className }) => {
         <Route
           exact
           path={`${currentPath}/${SERVER}/:serverId/${USER}/:userId`}
-          component={User}
-        />
-        <Route
-          exact
-          path={`${currentPath}/${SERVER}/:serverId`}
-          component={Server}
-        />
-        <Route exact path={`${currentPath}/${SERVER}`} component={ServerList} />
-        <Redirect to={`${currentPath}/${SERVER}`} />
+        >
+          <User />
+        </Route>
+
+        <Route exact path={`${currentPath}/${SERVER}/:serverId`}>
+          <Server />
+        </Route>
+
+        <Route exact path={`${currentPath}/${SERVER}`}>
+          <ServerList />
+        </Route>
+
+        <Route path={`${currentPath}`}>
+          <Frontpage />
+        </Route>
+
+        <Redirect to={currentPath} />
       </Switch>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
+import { useRouteMatch } from 'react-router-dom';
 
 import LoadedContent from '../generic/LoadedContent';
 import Messages from './Messages/Messages';
@@ -13,7 +14,9 @@ import { ROOT, SERVER } from '../../constants/routes';
 /**
  * Homepage for a single user.
  */
-const UserStructure = ({ match, className }) => {
+const UserStructure = ({ className }) => {
+  const match = useRouteMatch();
+
   const { serverId, userId } = match.params;
   const URL = `${process.env.REACT_APP_API_URL}/users/${userId}`;
 
@@ -46,7 +49,6 @@ const User = styled(UserStructure)`
 `;
 
 UserStructure.propTypes = {
-  match: PropTypes.object,
   className: PropTypes.string,
 };
 
