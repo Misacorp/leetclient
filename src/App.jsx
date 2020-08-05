@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/macro';
 import GlobalStyles from './styles/GlobalStyles';
 import theme from './styles/theme';
 import * as routes from './constants/routes';

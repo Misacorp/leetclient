@@ -1,12 +1,12 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/macro';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import theme from '../src/styles/theme';
 import GlobalStyles from '../src/styles/GlobalStyles';
 
-addDecorator(storyFn => (
+addDecorator((storyFn) => (
   <ThemeProvider theme={theme}>
     <>
       <GlobalStyles />
@@ -18,7 +18,7 @@ addDecorator(storyFn => (
 const req = require.context('../src/components', true, /\.stories\.jsx$/);
 
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  req.keys().forEach((filename) => req(filename));
 }
 
 configure(loadStories, module);
