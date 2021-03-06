@@ -11,6 +11,7 @@ import NarrowContainer from '../generic/Containers/NarrowContainer';
 
 import * as routes from '../../constants/routes';
 import ServerObject from '../../types/Server/ServerObject';
+import ServerUserListHeader from './ServerUserListHeader';
 
 /**
  * Homepage for a given server.
@@ -27,6 +28,9 @@ const ServerStructure = ({ className }) => {
       <LoadedContent url={URL} errorMessage="Error fetching server">
         {(data) => {
           const server = new ServerObject(data);
+          const highestLeet = server.users.sort(
+            (a, b) => b.counts?.LEET - a.counts?.LEET,
+          )[0].counts.LEET;
 
           return (
             <>
@@ -36,10 +40,17 @@ const ServerStructure = ({ className }) => {
                 counts={server.counts}
               />
 
+              <ServerUserListHeader />
+
               {server.users
                 .sort((a, b) => b.counts?.LEET - a.counts?.LEET)
                 .map((user, index) => (
-                  <ServerUserPreview user={user} key={user.id} index={index} />
+                  <ServerUserPreview
+                    user={user}
+                    key={user.id}
+                    index={index}
+                    max={highestLeet}
+                  />
                 ))}
             </>
           );
