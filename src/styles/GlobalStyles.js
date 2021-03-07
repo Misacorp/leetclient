@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components/macro';
 
 const GlobalStyles = createGlobalStyle`
       html {
-            height: auto;
             min-height: 100vh;
             background-color: ${({ theme }) => theme.palette.primary.dark};
       }
@@ -12,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
             padding: 0;
             font-family: ${({ theme }) => theme.typography.base.fontFamily};
             width: 100%;
-            min-height: 100%;
+            min-height: 100vh;
             font-weight: 500;
             font-size: ${({ theme }) => theme.typography.sizes[400]};
             background-size: cover;

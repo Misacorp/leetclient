@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Frontpage from './Frontpage';
-import ServerList from './ServerList';
+import ServerList from './ServerList/ServerList';
 import Server from './Server/Server';
 import User from './User/User';
 

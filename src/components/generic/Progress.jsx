@@ -27,10 +27,15 @@ const Progress = styled(ProgressStructure)`
     top: ${padding};
     bottom: ${padding};
     width: ${({ value, max }) => (value / max) * 100}%;
-    background-color: ${({ theme }) => theme.palette.primary.main};
-    border-right: 2px solid ${({ theme }) => theme.palette.primary.light};
     box-sizing: border-box;
     z-index: -1;
+
+    background: linear-gradient(
+        to right,
+        ${({ theme }) =>
+          `${theme.palette.primary.dark}, ${theme.palette.primary.main}`}
+      )
+      no-repeat;
   }
 `;
 

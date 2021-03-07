@@ -60,9 +60,7 @@ const ServerStructure = ({ className }) => {
   );
 };
 
-const Server = styled(ServerStructure)`
-  padding: 1rem;
-`;
+const Server = styled(ServerStructure)``;
 
 ServerStructure.propTypes = {
   className: PropTypes.string,

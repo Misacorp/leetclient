@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
-import { useRouteMatch } from 'react-router-dom';
 
-import Link from './generic/Link';
-import NarrowContainer from './generic/Containers/NarrowContainer';
+import NarrowContainer from '../generic/Containers/NarrowContainer';
+import ServerListItem from './ServerListItem';
+import BackLink from '../generic/BackLink';
 
-import ServerListObject from '../types/ServerList/ServerListObject';
-import apiRequest from '../services/apiRequest';
+import ServerListObject from '../../types/ServerList/ServerListObject';
+import apiRequest from '../../services/apiRequest';
+import * as routes from '../../constants/routes';
 
 // Place to get the list of servers from.
 const serverListUrl = `${process.env.REACT_APP_API_URL}/servers`;
@@ -16,8 +17,6 @@ const serverListUrl = `${process.env.REACT_APP_API_URL}/servers`;
  * Server list.
  */
 const ServerListStructure = ({ className }) => {
-  const match = useRouteMatch();
-
   const [servers, setServers] = useState([]);
 
   /**
@@ -44,19 +43,22 @@ const ServerListStructure = ({ className }) => {
 
   return (
     <NarrowContainer className={className}>
+      <BackLink to={routes.ROOT}>Frontpage</BackLink>
+
       <h1>Server browser</h1>
 
       {servers.map((server) => (
-        <div key={server.id}>
-          <img src={server.iconUrl} alt={`Server icon for ${server.name}`} />
-          <Link to={`${match.url}/${server.id}`}>{server.name}</Link>
-        </div>
+        <ServerListItem server={server} key={server.id} />
       ))}
     </NarrowContainer>
   );
 };
 
-const ServerList = styled(ServerListStructure)``;
+const ServerList = styled(ServerListStructure)`
+  h1 {
+    text-align: center;
+  }
+`;
 
 ServerListStructure.propTypes = {
   className: PropTypes.string,
