@@ -47,7 +47,7 @@ const LoadedContentStructure = ({ url, errorMessage, children, className }) => {
     if (fetchError) {
       content = (
         <p>
-          {errorMessage} ({fetchError})
+          {errorMessage} ({fetchError.message})
         </p>
       );
     } else {
